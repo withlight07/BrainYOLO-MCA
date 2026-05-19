@@ -17,18 +17,50 @@ Additional high-resolution detection head: Improves sensitivity to early-stage s
 
 Sparse self-attention: Strengthens global contextual features without significant computational overhead
 
+📄 Dataset Preparation
+Download the three public datasets:
+Br35H: https://universe.roboflow.com/hashira-fhxpj/br35h-::-brain-tumor-detection-2020
+MBrT: https://www.kaggle.com/datasets/ahmedsorour1/mri-for-brain-tumor-with-bounding-boxes
+Figshare: https://www.kaggle.com/datasets/ashkhagan/figshare-brain-tumor-dataset
+
+</details>
+
+<details open>
+<summary>使用</summary>
 
 
+### Python
+
+BrainYOLO-MCA使用方法与YOLO相同可直接在 Python 环境中使用
+
+```python
+import warnings
+from torch.cuda import seed_all
+warnings.filterwarnings('ignore')
+from ultralytics import YOLO
+if __name__ == '__main__':
+	model = YOLO('ultralytics/cfg/models/11/BrainYOLO-MCA.yaml')  
+	model.train(data='data_BrainTumor.yaml',   #数据集yaml文件
+	            imgsz=640,
+	            epochs=200,
+	            batch=16,
+	            workers=8,
+	            device=0,
+	            optimizer='SGD',
+	)
+```
 
 
+</details>
+
+🛠️ Environment Requirements
+Python 3.10+
+PyTorch 2.0.0+
+CUDA 12.1+
+Ultralytics 8.0+
 
 
-
-
-
-
-
-
+📝 Citation
 
 
 
